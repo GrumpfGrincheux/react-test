@@ -2,19 +2,28 @@ import { useCallback, useState, useEffect } from "react";
 
 export function useQuote() {
 	const [quote, setQuote] = useState();
+	const [author, setAuthor] = useState();
 	const getQuote = useCallback(async () => {
 		try {
-			const response = await fetch("https://catfact.ninja/fact");
+			const response = await fetch("https://type.fit/api/quotes");
 			let data = await response.json();
-			setQuote(data.fact);
+			if (response.status === 200) {
+				const randomId = Math.floor(Math.random() * data.length);
+				setQuote(data[randomId].text);
+				setAuthor(data[randomId].author);
+			} else {
+				setQuote(`Error ${response.status}`);
+			}
 		} catch (error) {
-			setQuote(
-				`An error occured, we're sorry for the inconvenience, please try again later.`,
-			);
+			setQuote(`${error}`);
 		}
 	}, []);
 	useEffect(() => {
 		getQuote();
 	}, [getQuote]);
-	return quote;
+	return {
+		quote,
+		author,
+		getQuote,
+	};
 }

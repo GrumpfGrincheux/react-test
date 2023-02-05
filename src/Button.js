@@ -1,8 +1,8 @@
 import "./button.scss";
-export function Button({ children, number, onClick }) {
+export function Button({ children, onClick }) {
 	return (
 		<button onClick={onClick} className="button">
-			{children} {number}
+			{children}
 		</button>
 	);
 }
