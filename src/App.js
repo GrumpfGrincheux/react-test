@@ -1,50 +1,37 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { Button } from "./Button";
-import { CatFact } from "./CatFact";
-import { useCounter } from "./useCounter";
-import { useEffect } from "react";
-import { Container } from "./Container";
-import { Quote } from "./Quote";
-
-const name = "Grumpf";
+import "./App.scss";
+import { BrowserRouter, Outlet } from "react-router-dom";
+import { QuotePage } from "./QuotePage";
+import { CounterPage } from "./CounterPage";
+import { Route, Routes } from "react-router-dom";
+import { Hello } from "./Hello";
+import { NavMenu } from "./NavMenu";
+import { LoginForm } from "./LoginForm";
+import { Home } from "./Home";
+import { AuthenticatedRoute } from "./AuthenticatedRoute";
 
 function App() {
-  const counter1 = useCounter();
-  const counter2 = useCounter();
-  useEffect(() => {
-    console.log("Hello");
-  }, [counter1.increment]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Container>
-          <CatFact></CatFact>
-          <Quote></Quote>
-        </Container>
-        <Container>
-          <div>
-            <p>{counter1.counter}</p>
-            <Button onClick={() => counter1.increment()}>Increment</Button>
-            <Button onClick={() => counter1.decrement()}>Decrement</Button>
-          </div>
-          <div>
-            <p>{counter2.counter}</p>
-            <Button onClick={() => counter2.increment()}>Increment</Button>
-            <Button onClick={() => counter2.decrement()}>Decrement</Button>
-          </div>
-        </Container>
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React {name}
-        </a>
-      </header>
+      <BrowserRouter>
+        <NavMenu />
+        <Routes>
+          <Route path="/login" element={<LoginForm />} />
+          <Route
+            path="/user"
+            element={
+              <AuthenticatedRoute>
+                <Outlet />
+              </AuthenticatedRoute>
+            }
+          >
+            <Route index element={<Home />} />
+            <Route path="quote" element={<QuotePage />} />
+            <Route path="counter" element={<CounterPage />} />
+            <Route path="hello" element={<Hello />} />
+          </Route>
+          <Route path="*" element={<p>Erreur 404 : Page non trouvée !</p>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

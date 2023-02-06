@@ -1,7 +1,8 @@
 .button {
-    background-color: blue;
-
-    &_green {
-        background-color: green;
-    }
+    background-color: #282c34;
+    color: white;
+    font-size: .8em;
+    padding: .2em;
+    margin: .2em;
+    border-radius: .5em;
 }
