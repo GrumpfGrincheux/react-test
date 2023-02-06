@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route
-            path="/user"
+            path="/"
             element={
               <AuthenticatedRoute>
                 <Outlet />
