@@ -1,18 +1,17 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { Button } from "./Button";
-import { Quote } from "./Quote";
+import { CatFact } from "./CatFact";
 import { useCounter } from "./useCounter";
 import { useEffect } from "react";
 import { Container } from "./Container";
-import { useQuote } from "./useQuote";
+import { Quote } from "./Quote";
 
 const name = "Grumpf";
 
 function App() {
   const counter1 = useCounter();
   const counter2 = useCounter();
-  const quote = useQuote();
   useEffect(() => {
     console.log("Hello");
   }, [counter1.increment]);
@@ -20,42 +19,20 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div>
-          <Quote>
-            <p>{quote}</p>
-          </Quote>
-        </div>
+        <Container>
+          <CatFact></CatFact>
+          <Quote></Quote>
+        </Container>
         <Container>
           <div>
             <p>{counter1.counter}</p>
-            <Button
-              className="_green"
-              onClick={() => counter1.increment()}
-              number={counter1.counter}
-            >
-              Increment
-            </Button>
-            <Button
-              onClick={() => counter1.decrement()}
-              number={counter1.counter}
-            >
-              Decrement
-            </Button>
+            <Button onClick={() => counter1.increment()}>Increment</Button>
+            <Button onClick={() => counter1.decrement()}>Decrement</Button>
           </div>
           <div>
             <p>{counter2.counter}</p>
-            <Button
-              onClick={() => counter2.increment()}
-              number={counter2.counter}
-            >
-              Increment
-            </Button>
-            <Button
-              onClick={() => counter2.decrement()}
-              number={counter2.counter}
-            >
-              Decrement
-            </Button>
+            <Button onClick={() => counter2.increment()}>Increment</Button>
+            <Button onClick={() => counter2.decrement()}>Decrement</Button>
           </div>
         </Container>
 
