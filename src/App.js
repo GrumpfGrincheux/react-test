@@ -29,6 +29,7 @@ function App() {
           <div>
             <p>{counter1.counter}</p>
             <Button
+              className="_green"
               onClick={() => counter1.increment()}
               number={counter1.counter}
             >

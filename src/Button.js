@@ -1,6 +1,9 @@
-import "./button.scss"
-export function Button({children, number, onClick}) {
-    return (
-    <button onClick={onClick} className="button">{children} {number}</button>
-    )
+import "./button.scss";
+export function Button({ children, number, onClick, className }) {
+  const classes = `button ${className}`;
+  return (
+    <button onClick={onClick} className={classes}>
+      {children} {number}
+    </button>
+  );
 }
