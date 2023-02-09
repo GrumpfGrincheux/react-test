@@ -2,16 +2,24 @@
 	display: flex;
 	border-bottom: white 0.1em solid;
 	background-color: #282c34;
+	justify-content: center;
+	position: sticky;
+	top: 0;
 }
 
 .nav-link {
 	color: white;
 	padding-inline: 1vmin;
-	border-right: white 0.01em solid;
 	font-size: 2em;
 	text-decoration: none;
-
+	padding: 5px 50px;
+	&__separator {
+	border-right: white 0.01em solid;
+	}
 	&:hover {
-		background-color: #39445a;
+		border-radius: 5px;
+		background-color: #616878;
+		transform: scale(1.05);
 	}
 }
+

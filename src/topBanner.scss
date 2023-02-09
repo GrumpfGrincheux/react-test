@@ -1,0 +1,18 @@
+.top-banner {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-sizing: border-box;
+    &__banner {
+        font-weight: bold;
+    }
+    &__close-button {
+        border: none;
+        border-radius: 0;
+        background-color: white;
+        &:hover {
+            cursor: pointer;
+            transform: scale(-1,1);
+        }
+    }
+}

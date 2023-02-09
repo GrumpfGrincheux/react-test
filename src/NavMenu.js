@@ -7,14 +7,17 @@ export function NavMenu() {
       <NavLink className="nav-link" to="/">
         Home
       </NavLink>
+      <div className="nav-link__separator" />
       <NavLink className="nav-link" to="/quote">
         Quotes
       </NavLink>
 
+      <div className="nav-link__separator" />
       <NavLink className="nav-link" to="/counter">
         Counter
       </NavLink>
 
+      <div className="nav-link__separator" />
       <NavLink className="nav-link" to="/hello">
         Hello
       </NavLink>
