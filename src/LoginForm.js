@@ -27,22 +27,39 @@ export function LoginForm() {
 	return auth === "true" ? (
 		<Navigate to="/" replace={true} />
 	) : (
-		<form className="login-form page" onSubmit={handleSubmit(onSubmit)}>
-			<label>Username</label>
-			<input
-				type="text"
-				name="username"
-				{...register("username", { required: true })}
-			/>
-			{errors.username && <span>This field is required</span>}
-			<label>Password</label>
-			<input
-				type="text"
-				name="password"
-				{...register("password", { required: true })}
-			/>
-			{errors.password && <span>This field is required</span>}
-			<input type="submit" value="Log In" />
-		</form>
+		<main>
+			<form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+				<label className="login-form__label" htmlFor="username">
+					Username
+				</label>
+				<input
+					className="login-form__text-input"
+					type="text"
+					name="username"
+					id="username"
+					{...register("username", { required: true })}
+				/>
+
+				{errors.username && <span>This field is required</span>}
+
+				<label className="login-form__label" htmlFor="password">
+					Password
+				</label>
+				<input
+					className="login-form__text-input"
+					type="text"
+					name="password"
+					id="password"
+					{...register("password", { required: true })}
+				/>
+
+				{errors.password && <span>This field is required</span>}
+				<input
+					className="login-form__submit-button"
+					type="submit"
+					value="Log In"
+				/>
+			</form>
+		</main>
 	);
 }
